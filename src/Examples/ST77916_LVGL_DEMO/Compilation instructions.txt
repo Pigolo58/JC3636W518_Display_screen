@@ -1,0 +1,14 @@
+Requires Arduino 3.0.1 and above
+
+Install the ESP32_Screen (0.1.4) library and
+ESP32_IO_Expander(0.0.2)library
+LVGL installation library 8.4.0 and below
+
+1. After installation, copy lv_conf. h to
+C: \ Users \ Your username \ Documents \ Arduino \ libraries \ directory
+
+2. Move the demos folder under C: \ Users \ your username \ Documents \ Arduino \ libraries \ lvgl \ to
+C: \ Users \ Your username \ Documents \ Arduino \ libraries \ lvgl \ src \ directory
+
+
+Adjust Arduino IDE according to the settings in the screenshot
