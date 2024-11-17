@@ -1,7 +1,8 @@
 #include <Arduino.h>
 #include "scr_st77916.h"
-#include <lvgl.h>
-#include <demos/lv_demos.h>
+// #include <lvgl.h>
+// #include <demos/lv_demos.h>
+#include <ui.h>
 #include <HardwareSerial.h>
 
 void setup()
@@ -9,9 +10,10 @@ void setup()
   delay(200);
   Serial.begin(115200);
   scr_lvgl_init();
-  lv_demo_widgets();
+  // lv_demo_widgets();
   //lv_demo_benchmark();
   //lv_demo_music();
+  ui_init();
 }
 
 void loop()

@@ -1,0 +1,11 @@
+SET(SOURCES screens/ui_MainPage.c
+    screens/ui_OpenSwichPage.c
+    ui.c
+    components/ui_comp_hook.c
+    ui_helpers.c
+    ui_events.c
+    images/ui_img_image_logo_chang_png.c
+    images/ui_img_2095349367.c
+    fonts/ui_font_Fontbig.c)
+
+add_library(ui ${SOURCES})
