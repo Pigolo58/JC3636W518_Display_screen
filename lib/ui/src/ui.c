@@ -46,7 +46,7 @@ PropertyAnimation_0_user_data->target = TargetObject;
 PropertyAnimation_0_user_data->val = -1;
 lv_anim_t PropertyAnimation_0;
 lv_anim_init(&PropertyAnimation_0);
-lv_anim_set_time(&PropertyAnimation_0, 1000);
+lv_anim_set_time(&PropertyAnimation_0, 800);
 lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
 lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_image_angle );
 lv_anim_set_values(&PropertyAnimation_0, 0, 3600 );
@@ -76,10 +76,10 @@ if ( event_code == LV_EVENT_SCREEN_LOADED) {
 void ui_event_Button1( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_PRESSED) {
-      _ui_state_modify( ui_S1, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    //   _ui_state_modify( ui_S1, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
       On_relay220VAC( e );
-      _ui_state_modify( ui_S2, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-      _ui_state_modify( ui_S3, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    //   _ui_state_modify( ui_S2, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    //   _ui_state_modify( ui_S3, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
       Btb_close( e );
 }
 }
@@ -89,6 +89,7 @@ if ( event_code == LV_EVENT_PRESSED) {
       Pressd_S1( e );
 }
 }
+
 void ui_event_S3( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_PRESSED) {

@@ -8,6 +8,9 @@
 #include <WiFi.h>
 // REPLACE WITH YOUR ESP RECEIVER'S MAC ADDRESS
 uint8_t broadcastAddress1[] = { 0x90,0x38,0x0c,0x63,0xef,0x58};
+unsigned char  checkbt1 = 0 ;
+unsigned char checkbt2 = 0;
+unsigned char checkbt3 = 0;
 
 typedef struct test_swich {
   bool swich_1;
@@ -17,8 +20,15 @@ typedef struct test_swich {
 test_swich swichdata;
 esp_now_peer_info_t peerInfo;
 
+
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status);
 void send_data_swich_ON(bool s1,bool s2,bool s3);
+void On_relay220VAC(lv_event_t * e);
+void Btb_close(lv_event_t * e);
+void Pressd_S1(lv_event_t * e);
+void Pressd_S2(lv_event_t * e);
+void Pressd_S3(lv_event_t * e);
+
 
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
   char macStr[18];
@@ -51,6 +61,7 @@ void On_relay220VAC(lv_event_t * e)
 void Btb_close(lv_event_t * e)
 {
 	// Your code here
+  
    send_data_swich_ON(0,0,0);
 
 }
@@ -58,19 +69,62 @@ void Btb_close(lv_event_t * e)
 void Pressd_S1(lv_event_t * e)
 {
 	// Your code here
-  send_data_swich_ON(1,0,0);
+  checkbt1++;
+  switch (checkbt1)
+  {
+  case 0:
+     send_data_swich_ON(0,NULL,NULL);
+    break;
+  case 1:
+     send_data_swich_ON(1,NULL,NULL);
+    break;
+  case 2:
+     send_data_swich_ON(0,NULL,NULL);
+     checkbt1 = 0;
+    break; 
+  default:
+    break;
+  }
 }
 
 void Pressd_S3(lv_event_t * e)
 {
-	// Your code here
-  send_data_swich_ON(0,0,1);
+	checkbt3++;
+  switch (checkbt3)
+  {
+  case 0:
+     send_data_swich_ON(NULL,NULL,0);
+    break;
+  case 1:
+     send_data_swich_ON(NULL,NULL,1);
+    break;
+  case 2:
+    send_data_swich_ON(NULL,NULL,0);
+    checkbt3 = 0;
+    break;
+  default:
+    break;
+  }
 }
 
 void Pressd_S2(lv_event_t * e)
 {
-	// Your code here
-  send_data_swich_ON(0,1,0);
+	checkbt2++;
+  switch (checkbt2)
+  {
+  case 0:
+     send_data_swich_ON(NULL,0,NULL);
+    break;
+  case 1:
+     send_data_swich_ON(NULL,1,NULL);
+    break;
+  case 2:
+    send_data_swich_ON(NULL,0,NULL);
+    checkbt2 = 0;
+    break;
+  default:
+    break;
+  }
 }
 void setup()
 {
